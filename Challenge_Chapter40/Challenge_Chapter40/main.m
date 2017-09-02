@@ -9,19 +9,33 @@
 #import <Foundation/Foundation.h>
 #import "NSData+Speakable.h"
 
+// assumes little endian
+void printBits(size_t const size, void const * const ptr)
+{
+    unsigned char *b = (unsigned char*) ptr;
+    unsigned char byte;
+    int i, j;
+    
+    for (i = size - 1; i >= 0; i--) {
+        for (j = 7; j >= 0; j--) {
+            byte = (b[i] >> j) & 1;
+            printf("%u", byte);
+        }
+    }
+    puts("");
+}
+
 int main(int argc, const char * argv[])
 {
     @autoreleasepool {
-        // Playground
-        // printf("%lu\n", sizeof(int));
         
         // Generate 8 bytes of random data
-        // srandom((unsigned int)time(NULL));
-        // int64_t randomBytes = (random() << 32) | random();
+        srandom((unsigned int)time(NULL));
+        int64_t randomBytes = (random() << 32) | random();
+        printBits(sizeof(randomBytes), &randomBytes);
         
         // Pack it in an NSData
-        int32_t randomBytes = CFSwapInt32HostToBig(0x53ec306f);
-        NSData *inData = [NSData dataWithBytes:&randomBytes length:sizeof(int32_t)];
+        NSData *inData = [NSData dataWithBytes:&randomBytes length:sizeof(int64_t)];
         NSLog(@"In Data = %@", inData);
         
         // Convert to a speakable string
