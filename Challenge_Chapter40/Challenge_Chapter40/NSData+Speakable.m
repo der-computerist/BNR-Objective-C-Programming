@@ -152,7 +152,7 @@ static const NSArray *brandNames = nil;
 {
     unsigned char left3 = [self threeLeftmostBitsFrom:number];
     unsigned char right5 = [self fiveRightmostBitsFrom:brandName];
-    unsigned char byte = [self byteByJoiningThreeLeftmostBits:left3 WithFiveRightmostBits:right5];
+    unsigned char byte = [self byteByJoiningThreeLeftmostBits:left3 withFiveRightmostBits:right5];
     return byte;
 }
 
@@ -166,7 +166,7 @@ static const NSArray *brandNames = nil;
     return [brandNames indexOfObject:brandName];
 }
 
-+ (unsigned char)byteByJoiningThreeLeftmostBits:(unsigned char)left3 WithFiveRightmostBits:(unsigned char)right5
++ (unsigned char)byteByJoiningThreeLeftmostBits:(unsigned char)left3 withFiveRightmostBits:(unsigned char)right5
 {
     left3 = left3 << 5;
     return left3 | right5;
