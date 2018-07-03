@@ -12,7 +12,7 @@
 {
     NSString *_productName;
 }
-// @property (nonatomic, copy) NSString *productName;
+
 @property (nonatomic) int voltage;
 
 // The designated initializer
