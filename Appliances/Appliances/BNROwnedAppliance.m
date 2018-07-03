@@ -16,8 +16,7 @@
 
 @implementation BNROwnedAppliance
 
-- (instancetype)initWithProductName:(NSString *)pn
-                     firstOwnerName:(NSString *)n
+- (instancetype)initWithProductName:(NSString *)pn firstOwnerName:(NSString *)n
 {
     // Call the superclass's initializer
     if (self = [super initWithProductName:pn]) {
